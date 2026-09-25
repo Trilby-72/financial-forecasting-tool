@@ -1,0 +1,16 @@
+{
+  "name": "financial-forecasting-tool",
+  "version": "1.0.0",
+  "description": "Financial forecasting dashboard for payroll, contractors, contracts, rent, and scenario planning.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2"
+  }
+}

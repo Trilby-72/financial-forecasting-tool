@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Financial Forecasting Dashboard</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Operations planning</p>
+        <h1>Financial Forecasting Dashboard</h1>
+      </div>
+      <button id="resetBtn" class="secondary">Reset baseline</button>
+    </header>
+
+    <main class="app-shell">
+      <section class="panel summary-panel">
+        <h2>Forecast overview</h2>
+        <div id="summaryCards" class="summary-grid"></div>
+      </section>
+
+      <section class="panel scenario-panel">
+        <h2>What-if scenarios</h2>
+        <form id="scenarioForm" class="scenario-form">
+          <div class="field-group">
+            <label for="addPersonName">Add employee</label>
+            <input id="addPersonName" type="text" placeholder="Name" />
+          </div>
+          <div class="field-group">
+            <label for="addPersonCost">Monthly cost</label>
+            <input id="addPersonCost" type="number" min="0" step="100" placeholder="6000" />
+          </div>
+          <button type="button" id="addPersonBtn">Add employee</button>
+
+          <div class="field-group">
+            <label for="removePersonSelect">Remove employee</label>
+            <select id="removePersonSelect"></select>
+          </div>
+          <button type="button" id="removePersonBtn">Remove</button>
+
+          <div class="field-group">
+            <label for="newDealValue">New deal value</label>
+            <input id="newDealValue" type="number" min="0" step="1000" placeholder="50000" />
+          </div>
+          <button type="button" id="applyDealBtn">Apply deal</button>
+
+          <div class="field-group">
+            <label for="cashflowAdjustment">Cashflow adjustment</label>
+            <input id="cashflowAdjustment" type="number" step="100" placeholder="1200" />
+          </div>
+          <button type="button" id="applyCashflowBtn">Adjust cashflow</button>
+        </form>
+      </section>
+
+      <section class="panel table-panel">
+        <h2>12-month forecast</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Revenue</th>
+                <th>Payroll</th>
+                <th>Contractors</th>
+                <th>Fixed costs</th>
+                <th>Net</th>
+              </tr>
+            </thead>
+            <tbody id="forecastTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

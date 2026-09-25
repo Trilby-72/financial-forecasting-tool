@@ -1,0 +1,182 @@
+:root {
+  --bg: #f3f7fb;
+  --panel: #ffffff;
+  --line: #dfeaf3;
+  --text: #12263a;
+  --muted: #5d7388;
+  --primary: #0f6cbd;
+  --success: #168b62;
+  --danger: #c94b4b;
+  --warning: #d49b2c;
+  --shadow: 0 16px 32px rgba(18, 38, 58, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, 'Segoe UI', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #102237;
+  color: white;
+  padding: 1.3rem 2rem;
+  box-shadow: var(--shadow);
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  opacity: 0.7;
+  margin: 0 0 0.35rem;
+  font-size: 0.7rem;
+}
+
+h1, h2 {
+  margin: 0;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.2rem;
+  padding: 1.2rem;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  padding: 1.2rem;
+  box-shadow: var(--shadow);
+}
+
+.summary-panel, .table-panel {
+  grid-column: 1 / -1;
+}
+
+.summary-grid {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.summary-card {
+  background: linear-gradient(180deg, #f6fbff, #edf4fc);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1rem;
+}
+
+.summary-card .label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.summary-card .value {
+  font-size: 1.7rem;
+  font-weight: 700;
+}
+
+.scenario-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+label {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+input, select, button {
+  border-radius: 10px;
+  border: 1px solid var(--line);
+  font: inherit;
+}
+
+input, select {
+  padding: 0.7rem 0.8rem;
+  background: white;
+}
+
+button {
+  align-self: end;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  background: var(--primary);
+  color: white;
+  border: none;
+  transition: opacity 0.2s ease;
+}
+
+button:hover {
+  opacity: 0.95;
+}
+
+button.secondary {
+  background: #eaf1f8;
+  color: var(--text);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+}
+
+th, td {
+  padding: 0.75rem 0.8rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+}
+
+th {
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+td.positive {
+  color: var(--success);
+  font-weight: 600;
+}
+
+td.negative {
+  color: var(--danger);
+  font-weight: 600;
+}
+
+@media (max-width: 900px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .scenario-form {
+    grid-template-columns: 1fr;
+  }
+}
