@@ -1,0 +1,43 @@
+name: Deploy Forecast App to Azure App Service
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+env:
+  NODE_VERSION: '20.x'
+  AZURE_WEBAPP_NAME: app-forecast-prod
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Install root dependencies
+        run: npm ci
+
+      - name: Install backend dependencies
+        run: npm ci --prefix backend
+
+      - name: Install frontend dependencies
+        run: npm ci --prefix frontend
+
+      - name: Build frontend
+        run: npm run build:frontend
+
+      - name: Deploy to Azure Web App
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ env.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
+          package: .

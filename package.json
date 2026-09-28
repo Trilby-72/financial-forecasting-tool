@@ -1,0 +1,14 @@
+{
+  "name": "hc2-forecasting-app",
+  "private": true,
+  "scripts": {
+    "dev:backend": "cd backend && npm start",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "build:frontend": "cd frontend && npm run build",
+    "start": "cd backend && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

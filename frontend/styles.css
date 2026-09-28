@@ -1,0 +1,376 @@
+:root {
+  --bg: #f3f6fb;
+  --panel: #ffffff;
+  --panel-alt: #f8fafc;
+  --border: #dfe7f1;
+  --text: #14213d;
+  --muted: #5d6b82;
+  --navy: #0f172a;
+  --blue: #2563eb;
+  --blue-soft: rgba(37, 99, 235, 0.09);
+  --green: #15803d;
+  --green-soft: #dcfce7;
+  --gold: #b7791f;
+  --gold-soft: #fef3c7;
+  --danger: #b91c1c;
+  --danger-soft: #fee2e2;
+  --shadow: 0 8px 24px rgba(15, 23, 42, 0.07);
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  margin: 0;
+  min-height: 100%;
+  font-family: Inter, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  min-height: 100vh;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.app-shell {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 32px 20px 48px;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  background: var(--navy);
+  color: #fff;
+  padding: 24px 32px;
+  margin-bottom: 24px;
+}
+
+.topbar h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+}
+
+.topbar p {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.74);
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+}
+
+.summary-panel {
+  grid-column: span 12;
+}
+
+.roster-panel {
+  grid-column: span 5;
+}
+
+.forecast-panel {
+  grid-column: span 7;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.summary-card {
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px;
+}
+
+.summary-card .label {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  margin-bottom: 8px;
+}
+
+.summary-card .value {
+  font-size: clamp(1.1rem, 2vw, 1.8rem);
+  font-weight: 700;
+}
+
+.roster-list {
+  display: grid;
+  gap: 12px;
+}
+
+.employee-row {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+
+.employee-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.employee-meta strong {
+  font-size: 0.98rem;
+}
+
+.employee-meta span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+input[type='checkbox'] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--blue);
+}
+
+.tag {
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.tag.fixed {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+
+.tag.day-rate {
+  background: var(--gold-soft);
+  color: var(--gold);
+}
+
+button.primary,
+button.secondary {
+  border: none;
+  border-radius: 10px;
+  padding: 9px 14px;
+  font-weight: 600;
+}
+
+button.primary {
+  background: var(--blue);
+  color: #fff;
+}
+
+button.secondary {
+  background: var(--panel-alt);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.dashboard-controls {
+  display: flex;
+  justify-content: flex-end;
+  margin: 12px 0 20px;
+}
+
+.starting-balance-control {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: var(--text);
+  font-weight: 600;
+}
+
+.starting-balance-control input {
+  width: 150px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+
+.payroll-summary-block {
+  margin-top: 22px;
+}
+
+.payroll-table-wrap {
+  margin-top: 16px;
+}
+
+.compact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.toolbar-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.filter-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--panel-alt);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 8px 12px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.filter-inline select {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  padding: 7px 10px;
+  color: var(--text);
+}
+
+.payroll-register-table {
+  margin-bottom: 20px;
+}
+
+.payroll-bills-block h3 {
+  margin: 0 0 12px;
+}
+
+.empty-table-message {
+  text-align: center;
+  color: var(--muted);
+  padding: 18px 12px;
+}
+
+.table-wrap {
+  overflow: auto;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.table th,
+.table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  background: #f8fafc;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.amount {
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.bill-overridden {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border-radius: 999px;
+  padding: 4px 8px;
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 600;
+}
+
+.status-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--green-soft);
+  border: 1px solid rgba(21, 128, 61, 0.2);
+  color: var(--green);
+  border-radius: 999px;
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.error-box {
+  background: var(--danger-soft);
+  color: var(--danger);
+  border: 1px solid rgba(185, 28, 28, 0.15);
+  border-radius: 10px;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 960px) {
+  .roster-panel,
+  .forecast-panel {
+    grid-column: span 12;
+  }
+
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
