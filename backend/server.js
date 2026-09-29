@@ -12,6 +12,7 @@ const DATA_DIR = path.join(__dirname, 'data');
 const DB_FILE = path.resolve(process.env.SQLITE_DB_PATH || path.join(DATA_DIR, 'cashflow.db'));
 
 fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
+console.log(`SQLite database path: ${DB_FILE}`);
 app.use(cors());
 app.use(express.json());
 
