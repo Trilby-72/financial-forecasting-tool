@@ -72,7 +72,7 @@ printf "\nSetting startup command...\n"
 az webapp config set \
   --name "$WEB_APP" \
   --resource-group "$RESOURCE_GROUP" \
-  --startup-file "npm start" \
+  --startup-file "scripts/start-forecast-app.sh" \
   --output table
 
 printf "\nDone. Forecasting app infrastructure created.\n"
