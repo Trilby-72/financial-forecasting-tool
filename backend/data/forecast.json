@@ -1,0 +1,24 @@
+{
+  "employees": [
+    { "id": "emp-1", "name": "Ava Patel", "role": "Account Director", "monthlyCost": 7200, "active": true },
+    { "id": "emp-2", "name": "Milo Chen", "role": "Senior Consultant", "monthlyCost": 6200, "active": true },
+    { "id": "emp-3", "name": "Priya Shah", "role": "Operations Manager", "monthlyCost": 5400, "active": true }
+  ],
+  "contractors": [
+    { "id": "ctr-1", "name": "Design Support", "role": "UX", "monthlyCost": 2900, "active": true },
+    { "id": "ctr-2", "name": "Finance Admin", "role": "Bookkeeping", "monthlyCost": 2200, "active": true }
+  ],
+  "contracts": [
+    { "id": "ctrct-1", "name": "Retainer A", "monthlyRevenue": 12000, "active": true, "startMonth": 1, "endMonth": 12 },
+    { "id": "ctrct-2", "name": "Business Support", "monthlyRevenue": 6000, "active": true, "startMonth": 4, "endMonth": 12 }
+  ],
+  "sow": [
+    { "id": "sow-1", "name": "Project Orion", "monthlyRevenue": 8500, "active": true, "startMonth": 3, "endMonth": 6 }
+  ],
+  "rent": { "monthlyCost": 2600, "active": true },
+  "outgoings": { "monthlyCost": 1800, "active": true },
+  "deals": [
+    { "id": "deal-1", "name": "Northwind Expansion", "probability": 0.62, "value": 48000, "month": 6 },
+    { "id": "deal-2", "name": "New Brand Retainer", "probability": 0.45, "value": 36000, "month": 9 }
+  ]
+}
