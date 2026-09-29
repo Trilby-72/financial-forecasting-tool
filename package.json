@@ -2,6 +2,7 @@
   "name": "hc2-forecasting-app",
   "private": true,
   "scripts": {
+    "postinstall": "npm ci --prefix backend --omit=dev",
     "dev:backend": "cd backend && npm start",
     "dev:frontend": "cd frontend && npm run dev",
     "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",

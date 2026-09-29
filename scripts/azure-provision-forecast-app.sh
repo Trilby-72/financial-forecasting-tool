@@ -58,7 +58,7 @@ printf "\nConfiguring app settings...\n"
 az webapp config appsettings set \
   --name "$WEB_APP" \
   --resource-group "$RESOURCE_GROUP" \
-  --settings NODE_ENV=production SQLITE_DB_PATH="$SQLITE_DB_PATH" \
+  --settings NODE_ENV=production SQLITE_DB_PATH="$SQLITE_DB_PATH" SCM_DO_BUILD_DURING_DEPLOYMENT=true \
   --output table
 
 printf "\nEnforcing HTTPS only...\n"
