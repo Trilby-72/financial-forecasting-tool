@@ -397,6 +397,13 @@ async function seedReferenceData() {
       );
     }
   }
+
+  const finalCounts = await Promise.all([
+    allQuery('SELECT COUNT(*) AS count FROM employees'),
+    allQuery('SELECT COUNT(*) AS count FROM clients'),
+    allQuery('SELECT COUNT(*) AS count FROM contracts'),
+  ]);
+  console.log(`SQLite data counts: employees=${finalCounts[0][0]?.count || 0}, clients=${finalCounts[1][0]?.count || 0}, contracts=${finalCounts[2][0]?.count || 0}`);
 }
 
 async function getEmployees() {
