@@ -15,7 +15,8 @@ LOCATION="australiaeast"
 RESOURCE_GROUP="rg-hc2-forecast-prod"
 APP_SERVICE_PLAN="asp-hc2-forecast-prod"
 WEB_APP="app-hc2-forecast-prod"
-RUNTIME="NODE:20-lts"
+SQLITE_DB_PATH="/home/site/data/cashflow.db"
+RUNTIME="NODE|22-lts"
 SKU="B1"
 
 # Optional: override defaults with environment variables
@@ -23,6 +24,7 @@ LOCATION="${LOCATION_OVERRIDE:-$LOCATION}"
 RESOURCE_GROUP="${RESOURCE_GROUP_OVERRIDE:-$RESOURCE_GROUP}"
 APP_SERVICE_PLAN="${APP_SERVICE_PLAN_OVERRIDE:-$APP_SERVICE_PLAN}"
 WEB_APP="${WEB_APP_OVERRIDE:-$WEB_APP}"
+SQLITE_DB_PATH="${SQLITE_DB_PATH_OVERRIDE:-$SQLITE_DB_PATH}"
 RUNTIME="${RUNTIME_OVERRIDE:-$RUNTIME}"
 SKU="${SKU_OVERRIDE:-$SKU}"
 
@@ -56,7 +58,7 @@ printf "\nConfiguring app settings...\n"
 az webapp config appsettings set \
   --name "$WEB_APP" \
   --resource-group "$RESOURCE_GROUP" \
-  --settings NODE_ENV=production \
+  --settings NODE_ENV=production SQLITE_DB_PATH="$SQLITE_DB_PATH" \
   --output table
 
 printf "\nEnforcing HTTPS only...\n"

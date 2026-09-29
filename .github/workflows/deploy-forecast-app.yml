@@ -7,8 +7,8 @@ on:
       - main
 
 env:
-  NODE_VERSION: '20.x'
-  AZURE_WEBAPP_NAME: app-forecast-prod
+  NODE_VERSION: '22.x'
+  AZURE_WEBAPP_NAME: app-hc2-forecast-prod
 
 jobs:
   build-and-deploy:

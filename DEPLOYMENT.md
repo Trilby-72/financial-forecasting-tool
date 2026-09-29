@@ -16,8 +16,8 @@ Use a dedicated naming set that is not shared with Staff Calendar resources.
 Create these in the same Azure region:
 
 - Resource group
-- Linux App Service Plan (Node 20 compatible)
-- Web App (Linux, Node 20)
+- Linux App Service Plan (Node 22 compatible)
+- Web App (Linux, Node 22)
 - Optional Application Insights
 
 If you keep SQLite in production, create a Storage Account and Azure Files share for durable file persistence.
@@ -27,8 +27,13 @@ If you keep SQLite in production, create a Storage Account and Azure Files share
 In App Service Configuration, set:
 
 - NODE_ENV = production
+- SQLITE_DB_PATH = /home/site/data/cashflow.db
 
 Do not set VITE_API_BASE for same-host deployment. Frontend defaults to /api.
+
+Mount an Azure Files share to `/home/site/data` in the Web App's Path mappings configuration. The application creates `cashflow.db` inside that mount automatically.
+
+Keep the app at one App Service instance while using SQLite. Do not scale out horizontally because SQLite is file-based and is not intended for concurrent writes from multiple app instances.
 
 ## 4. GitHub Actions deployment setup
 
@@ -65,12 +70,9 @@ Validate:
 
 ## 7. Persistence decision (production)
 
-Current app stores data in SQLite file backend/data/cashflow.db.
+Current app stores data in SQLite. Locally it uses `backend/data/cashflow.db`; in Azure, `SQLITE_DB_PATH` points to the Azure Files mount.
 
-Choose one:
-
-- Preferred: migrate to Azure SQL or PostgreSQL
-- Interim: mount Azure Files to store cashflow.db durably
+For the current light-write workload, use the Azure Files mount. Revisit Azure SQL or PostgreSQL if the app needs multiple instances, higher write concurrency, or managed relational backups.
 
 ## 8. Security baseline
 

@@ -9,9 +9,9 @@ const { buildContractRevenueSchedule, resolveDueDate, formatDateKey } = require(
 const app = express();
 const PORT = process.env.PORT || 4000;
 const DATA_DIR = path.join(__dirname, 'data');
-const DB_FILE = path.join(DATA_DIR, 'cashflow.db');
+const DB_FILE = path.resolve(process.env.SQLITE_DB_PATH || path.join(DATA_DIR, 'cashflow.db'));
 
-fs.mkdirSync(DATA_DIR, { recursive: true });
+fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
 app.use(cors());
 app.use(express.json());
 
