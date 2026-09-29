@@ -12,7 +12,6 @@ const DATA_DIR = path.join(__dirname, 'data');
 const DB_FILE = path.resolve(process.env.SQLITE_DB_PATH || path.join(DATA_DIR, 'cashflow.db'));
 
 fs.mkdirSync(path.dirname(DB_FILE), { recursive: true });
-console.log(`SQLite database path: ${DB_FILE}`);
 app.use(cors());
 app.use(express.json());
 
@@ -398,12 +397,6 @@ async function seedReferenceData() {
     }
   }
 
-  const finalCounts = await Promise.all([
-    allQuery('SELECT COUNT(*) AS count FROM employees'),
-    allQuery('SELECT COUNT(*) AS count FROM clients'),
-    allQuery('SELECT COUNT(*) AS count FROM contracts'),
-  ]);
-  console.log(`SQLite data counts: employees=${finalCounts[0][0]?.count || 0}, clients=${finalCounts[1][0]?.count || 0}, contracts=${finalCounts[2][0]?.count || 0}`);
 }
 
 async function getEmployees() {
